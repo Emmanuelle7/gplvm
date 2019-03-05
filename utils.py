@@ -2,7 +2,7 @@ pip install GPy
 pip install pods
 pip install scikit-learn
 
-import GPypip
+import GPy
 from GPy.examples.dimensionality_reduction import *
 from GPy.examples.classification import *
 from GPy.kern import *
