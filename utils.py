@@ -52,7 +52,7 @@ def truthworthiness(X,Y,k=5):
   for i in range(N):
     U = np.setdiff1d(X_ind[i,1:k+1],Y_ind[i,1:k+1])
     for j in range(U.shape[0]):
-      T = T + np.where(X_ind[i,:k+1] == U[j])[0] - k
+      T = T + (k - np.where(X_ind[i,:k+1] == U[j])[0])
   T = 1 - 2/(N*k*(2*N - 3*k -1))*T
   
   # Continuity
@@ -60,7 +60,7 @@ def truthworthiness(X,Y,k=5):
   for i in range(N):
     V = np.setdiff1d(Y_ind[i,1:k+1], X_ind[i,1:k+1])
     for j in range(V.shape[0]):
-      C = C + np.where(Y_ind[i,:k+1] == V[j])[0] - k
+      C = C + (k - np.where(Y_ind[i,:k+1] == V[j])[0])
   C = 1 - 2/(N*k*(2*N - 3*k -1))*C
   
   return T[0],C[0]
