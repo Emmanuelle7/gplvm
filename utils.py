@@ -27,14 +27,15 @@ def swiss_roll_generator(num_samples=1000, sigma=0.1):
   
 def classification_error(X,labels):
   
+  N = X.shape[0]
   one_NN = NearestNeighbors(n_neighbors=2, algorithm='auto').fit(X)
   _, indices = one_NN.kneighbors(X)
   compt = 0
-  for i in range(X.shape[0]):
+  for i in range(N):
     if labels[indices[i,0]]!=labels[indices[i,1]]:
       compt+=1
 
-  return compt
+  return compt/N
   
   
 
