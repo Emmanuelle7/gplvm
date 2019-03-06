@@ -13,16 +13,15 @@ import matplotlib.pyplot as plt
 import mpl_toolkits.mplot3d.axes3d as p3
 import numpy as np
 
-
+np.random.seed(123344)
 
 def swiss_roll_generator(num_samples=1000, sigma=0.1):
   
   t = 3*np.pi/2*(1+2*np.random.rand(num_samples))
   h = 30*np.random.rand(num_samples)
   y = np.stack([t*np.cos(t),t*np.sin(t),h],axis=1) + sigma*np.random.rand(num_samples,3)
-  lab = (t//2 + h//2 + 2) % 2
-  
-  return y,lab
+  lab = (t//2 + h//12 + 2) % 2
+  return y,lab,t,h
   
   
 def classification_error(X,labels):
